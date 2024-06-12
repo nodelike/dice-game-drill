@@ -1,25 +1,17 @@
 import React from 'react';
 import { useState } from 'react';
 import "./App.css";
-import dice1 from './assets/dice-1.svg';
-import dice2 from './assets/dice-2.svg';
-import dice3 from './assets/dice-3.svg';
-import dice4 from './assets/dice-4.svg';
-import dice5 from './assets/dice-5.svg';
-import dice6 from './assets/dice-6.svg';
 
-const diceImages = [dice1, dice2, dice3, dice4, dice5, dice6];
-
-function Dicer() {
+const Dicer = () => {
   let [winner, setWinner] = useState("Start Playing!");
-  let [player1Dice, setPlayer1Dice] = useState(diceImages[0]);
-  let [player2Dice, setPlayer2Dice] = useState(diceImages[0]);
+  let [player1Dice, setPlayer1Dice] = useState(1);
+  let [player2Dice, setPlayer2Dice] = useState(1);
 
-  function updateMove() {
+  const updateMove = () => {
     let player1Move = Math.floor(Math.random() * 6);
     let player2Move = Math.floor(Math.random() * 6);
-    setPlayer1Dice(diceImages[player1Move]);
-    setPlayer2Dice(diceImages[player2Move]);
+    setPlayer1Dice(player1Move);
+    setPlayer2Dice(player2Move);
     if (player1Move > player2Move) {
       setWinner("Player 1 wins!");
     } else if (player1Move < player2Move) {
@@ -35,11 +27,11 @@ function Dicer() {
       <div className="dices w-full flex flex-col items-center md:flex-row justify-evenly gap-12">
         <div className="flex flex-col gap-4 w-4/5 md:w-full items-center">
           <h2 className='text-2xl'>Player 1</h2>
-          <img className='hover:rotate-180 duration-300' src={player1Dice} alt="Player 1 Dice" />
+          <img className='hover:rotate-180 duration-300' src={`/src/assets/dice-${player1Dice}.svg`} alt="Player 1 Dice" />
         </div>
         <div className="flex flex-col gap-4 w-4/5 md:w-full items-center">
           <h2 className='text-2xl'>Player 2</h2>
-          <img className='hover:rotate-180 duration-300' src={player2Dice} alt="Player 2 Dice" />
+          <img className='hover:rotate-180 duration-300' src={`/src/assets/dice-${player2Dice}.svg`} alt="Player 2 Dice" />
         </div>
       </div>
       <button className='bg-red-600 hover:bg-red-400 py-2 px-8 text-lg text-white font-semibold rounded-md' onClick={updateMove}>Play</button>
