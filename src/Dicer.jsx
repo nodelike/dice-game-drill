@@ -27,11 +27,11 @@ const Dicer = () => {
       <div className="dices w-full flex flex-col items-center md:flex-row justify-evenly gap-12">
         <div className="flex flex-col gap-4 w-4/5 md:w-full items-center">
           <h2 className='text-2xl'>Player 1</h2>
-          <img className='hover:rotate-180 duration-300' src={`/src/assets/dice-${player1Dice}.svg`} alt="Player 1 Dice" />
+          <img className='hover:rotate-180 duration-300' src={`./assets/dice-${player1Dice}.svg`} alt="Player 1 Dice" />
         </div>
         <div className="flex flex-col gap-4 w-4/5 md:w-full items-center">
           <h2 className='text-2xl'>Player 2</h2>
-          <img className='hover:rotate-180 duration-300' src={`/src/assets/dice-${player2Dice}.svg`} alt="Player 2 Dice" />
+          <img className='hover:rotate-180 duration-300' src={`./assets/dice-${player2Dice}.svg`} alt="Player 2 Dice" />
         </div>
       </div>
       <button className='bg-red-600 hover:bg-red-400 py-2 px-8 text-lg text-white font-semibold rounded-md' onClick={updateMove}>Play</button>
