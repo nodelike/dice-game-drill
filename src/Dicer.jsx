@@ -1,31 +1,32 @@
-import React from 'react'
-import { useState } from 'react'
-import "./App.css"
+import React from 'react';
+import { useState } from 'react';
+import "./App.css";
+import dice1 from './assets/dice-1.svg';
+import dice2 from './assets/dice-2.svg';
+import dice3 from './assets/dice-3.svg';
+import dice4 from './assets/dice-4.svg';
+import dice5 from './assets/dice-5.svg';
+import dice6 from './assets/dice-6.svg';
+
+const diceImages = [dice1, dice2, dice3, dice4, dice5, dice6];
 
 function Dicer() {
-  let [winner, setWinner] = useState("Start Playing!")
-  let [player1Dice, setPlayer1Dice] = useState('src/assets/dice-1.svg')
-  let [player2Dice, setPlayer2Dice] = useState('src/assets/dice-1.svg')
+  let [winner, setWinner] = useState("Start Playing!");
+  let [player1Dice, setPlayer1Dice] = useState(diceImages[0]);
+  let [player2Dice, setPlayer2Dice] = useState(diceImages[0]);
 
-  function updateMove(){
-
-    let player1Move = Math.floor(Math.random() * 6) + 1;
-    let player2Move = Math.floor(Math.random() * 6) + 1;
-
-    let player1play = `src/assets/dice-${player1Move}.svg`;
-    let player2play =`src/assets/dice-${player2Move}.svg`;
-
-    setPlayer1Dice(player1play);
-    setPlayer2Dice(player2play);
-
-    if(player1Move > player2Move){
-      setWinner("Player 1 wins!")
-    } else if (player1Move < player2Move){
-      setWinner("Player 2 wins!")
-    } else{
-      setWinner("Draw!")
+  function updateMove() {
+    let player1Move = Math.floor(Math.random() * 6);
+    let player2Move = Math.floor(Math.random() * 6);
+    setPlayer1Dice(diceImages[player1Move]);
+    setPlayer2Dice(diceImages[player2Move]);
+    if (player1Move > player2Move) {
+      setWinner("Player 1 wins!");
+    } else if (player1Move < player2Move) {
+      setWinner("Player 2 wins!");
+    } else {
+      setWinner("Draw!");
     }
-
   }
 
   return (
@@ -38,7 +39,7 @@ function Dicer() {
         </div>
         <div className="flex flex-col gap-4 w-full items-center">
           <h2 className='text-2xl'>Player 2</h2>
-          <img className='hover:rotate-180 duration-300' src={player2Dice} alt="Player 1 Dice" />
+          <img className='hover:rotate-180 duration-300' src={player2Dice} alt="Player 2 Dice" />
         </div>
       </div>
       <button className='bg-red-600 hover:bg-red-400 py-2 px-8 text-lg text-white font-semibold rounded-md' onClick={updateMove}>Play</button>
@@ -46,4 +47,4 @@ function Dicer() {
   )
 }
 
-export default Dicer
+export default Dicer;
